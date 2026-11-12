@@ -75,6 +75,7 @@ class Agent:
             if not resp["tool_calls"]:
                 return resp["content"] or ""
             self._execute_tool_calls(resp["tool_calls"])
+        return "达到最大步数，任务未完成"
 
     def _execute_tool_calls(self, tool_calls: list[dict]) -> None:
         """执行本轮所有工具调用，结果逐个追加为 tool 消息。

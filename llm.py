@@ -161,7 +161,7 @@ def _post(payload: dict) -> dict:
         # 网络层失败：DNS 解析不了、连接被拒等，e.reason 里有原因
         raise LLMNetworkError(f"网络错误: {e.reason}") from e
 
-    except TimeoutError:
+    except TimeoutError as e:
         # 注意：超时抛的是内置 TimeoutError，不是 URLError
         raise LLMNetworkError("请求超时") from e
 
