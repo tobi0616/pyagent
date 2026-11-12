@@ -203,7 +203,5 @@ PYTHONPATH=. python3 script/smoke_test_llm_tools.py
 ## 已知限制
 
 - 对话历史只增不减，没有压缩或截断（长会话会持续消耗上下文）。
-- 达到 `MAX_ITERATIONS` 后 `Agent.run()` 会返回 `None`，调用方需要额外兜底。
 - 无流式输出；工具调用与回答都是一次性返回。
-- `llm._post()` 的 `TimeoutError` 分支引用了未定义的变量 `e`，真发生超时时会抛 `NameError`。
 - REPL 对 `LLMError` 只打印固定提示，调试时需要直接运行 `agent.py` 或加日志。
